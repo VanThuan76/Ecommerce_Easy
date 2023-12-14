@@ -1,13 +1,21 @@
 export interface IUser {
-  address?: string;
-  created_at: string;
-  email: string;
   id: number;
-  is_activated: number;
-  name?: string;
-  password: string;
-  phone: string;
-  role: number;
-  token?: string;
+  name: string;
+  email: string;
+  email_verified_at?: any;
+  gender: number;
+  birthday?: any;
+  address?: any;
+  avatar?: any;
+  created_at: string;
+  updated_at: string;
+}
+export interface IAccount {
+  name: string;
+  email: string;
   updated_at?: string;
+  created_at?: string;
+  token?: string;
+  id: number;
+  cartExits?: number;
 }

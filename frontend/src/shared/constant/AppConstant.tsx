@@ -2,6 +2,7 @@ import { MailOutlined, ShoppingCartOutlined, TagsOutlined } from '@ant-design/ic
 import type { MenuProps } from 'antd';
 
 export const APP_SAVE_KEYS = {
+    USER_ID: 'user_id',
     KEYS: 'keys',
     SESSION_KEY: 'sessionKey',
     ROLE: 'role',

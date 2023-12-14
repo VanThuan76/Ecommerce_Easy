@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Response\CommonResponse;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Cart;
 
 class UserController extends Controller
 {
@@ -17,16 +15,19 @@ class UserController extends Controller
     public function getById($id)
     {
         $user = User::find($id);
-
-        if (!$user) {
-            $response = $this->_formatBaseResponse(404, null, 'Người dùng không được tìm thấy');
-            return response()->json($response, 404);
-        }
+        $quantities = Cart::where('user_id', $user->id)->pluck('quantity');
+        $totalQuantity = $quantities->sum();
         $transformedUser = [
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
+            'token' => $user->remember_token,
+            'cartExits' => $totalQuantity
         ];
+        if (!$user) {
+            $response = $this->_formatBaseResponse(404, null, 'Người dùng không được tìm thấy');
+            return response()->json($response, 404);
+        }
         $response = $this->_formatBaseResponse(200, $transformedUser, 'Lấy dữ liệu thành công');
         return response()->json($response);
     }

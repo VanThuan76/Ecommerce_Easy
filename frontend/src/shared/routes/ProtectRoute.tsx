@@ -6,7 +6,7 @@ interface Props{
   children: React.ReactElement
 }
 
-export const ProtectedRouteDashboardAdmin = ({ children }: Props) => {
+export const ProtectedRoute = ({ children }: Props) => {
   const key = getCookie(APP_SAVE_KEYS.KEYS)
 
   if (key !== true) {

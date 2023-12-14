@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Models\User;
-use App\Traits\ResponseFormattingTrait;
+use App\Http\Response\CommonResponse;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    use ResponseFormattingTrait;
+    use CommonResponse;
 
     protected $redirectTo = '/';
 

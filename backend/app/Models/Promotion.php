@@ -8,6 +8,10 @@ class Promotion extends Model
 {
     protected $table = 'promotion';
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 	protected $hidden = [
     ];
 

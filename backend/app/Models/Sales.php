@@ -8,6 +8,10 @@ class Sales extends Model
 {
     protected $table = 'sales';
 
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class, 'payment_id');
+    }
 	protected $hidden = [
     ];
 
